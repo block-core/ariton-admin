@@ -1,0 +1,33 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install --force
+        working-directory: app
+
+      - name: Run tests
+        run: npm test -- --watch=false --browsers=ChromeHeadless
+        working-directory: app
+        continue-on-error: true
+
+      - name: Run deploy script
+        run: npm run deploy
+        working-directory: app
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

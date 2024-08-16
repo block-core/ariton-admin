@@ -1,0 +1,59 @@
+<mat-card>
+  <mat-card-header>
+    <!-- <img
+      mat-card-avatar
+      [src]="data()?.avatar | safeResourceUrl"
+      onerror="this.src='/avatar-placeholder.png';this.onerror='';"
+    /> -->
+    <mat-card-title>
+      @if (data().profile?.name) {
+      <a [routerLink]="['/profile', data().profile?.did]"
+        >{{ data().profile?.name }} @if (data().profile?.title) { ({{ data().profile?.title }}) }</a
+      >
+      } @else {
+      <em
+        ><a [routerLink]="['/profile', data().profile?.did]"
+          >No name set @if (data().profile?.title) { ({{ data().profile?.title }}) }
+        </a></em
+      >
+      }
+    </mat-card-title>
+    <mat-card-subtitle>
+      <!-- <app-did [did]="data().profile?.did"></app-did> -->
+      <a [routerLink]="['/profile', data().profile?.did]">{{ data().profile?.did | did }}</a>
+    </mat-card-subtitle>
+  </mat-card-header>
+
+  <!-- <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Shiba Inu</mat-card-title>
+    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+  </mat-card-header> -->
+
+  <br />
+  @if (data().avatar) {
+  <img
+    class="profile-thumbnail"
+    mat-card-image
+    [routerLink]="['/profile', data().profile?.did]"
+    [src]="data().avatar | safeResourceUrl"
+    onerror="this.src='/avatar-placeholder.png';this.onerror='';"
+  />
+  } @else {
+  <img
+    class="profile-thumbnail"
+    mat-card-image
+    [routerLink]="['/profile', data().profile?.did]"
+    [src]="'/avatar-placeholder.png'"
+  />
+  }
+
+  <mat-card-content>
+    @if (data().message) {
+    <p>{{ data().message }}</p>
+    }
+  </mat-card-content>
+  <mat-card-actions>
+    <ng-content></ng-content>
+  </mat-card-actions>
+</mat-card>
