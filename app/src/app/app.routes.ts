@@ -251,33 +251,9 @@ export const routes: Routes = [
     data: { hide: true, icon: 'settings' },
   },
   {
-    path: 'settings/handler',
-    loadComponent: () => import('./settings/handler/handler.component').then((c) => c.HandlerComponent),
-    title: 'Protocol Handler',
-    data: { hide: true, icon: 'search' },
-  },
-  {
-    path: 'tree',
-    loadComponent: () => import('./tree/tree.component').then((c) => c.TreeComponent),
-    title: 'Tree',
-    data: { hide: true, icon: 'folder' },
-  },
-  {
-    path: 'drag-drop',
-    loadComponent: () => import('./drag-drop/drag-drop.component').then((c) => c.DragDropComponent),
-    title: 'Drag-Drop',
-    data: { hide: true, icon: 'folder' },
-  },
-  {
-    path: 'storage',
-    loadComponent: () => import('./storage/storage.component').then((c) => c.StorageComponent),
-    title: 'Storage',
-    data: { icon: 'cloud' },
-  },
-  {
     path: 'management',
     loadComponent: () => import('./management/management.component').then((c) => c.ManagementComponent),
     title: 'Management',
-    data: { hide: true, icon: 'manage_accounts' },
+    data: { icon: 'manage_accounts' },
   },
 ];
