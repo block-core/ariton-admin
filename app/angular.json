@@ -121,7 +121,7 @@
             "baseHref": "/",
             "dir": "dist/app",
             "repo": "https://github.com/block-core/ariton.git",
-            "cname": "alpha.ariton.app"
+            "cname": "admin.ariton.app"
           }
         }
       }
