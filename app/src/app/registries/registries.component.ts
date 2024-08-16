@@ -71,6 +71,7 @@ export class RegistriesComponent implements AfterViewInit {
         owner: this.identity.did,
       },
       message: {
+        published: true, // Admin account publish for everyone to see.
         protocol: registry.uri,
         protocolPath: 'profile',
         dataFormat: 'application/json',
@@ -89,6 +90,7 @@ export class RegistriesComponent implements AfterViewInit {
         owner: this.identity.did,
       },
       message: {
+        published: true, // Admin account publish for everyone to see.
         protocol: registry.uri,
         protocolPath: 'profile',
         dataFormat: 'application/json',
@@ -107,6 +109,7 @@ export class RegistriesComponent implements AfterViewInit {
         owner: this.identity.did,
       },
       message: {
+        published: true, // Admin account publish for everyone to see.
         protocol: registry.uri,
         protocolPath: 'profile',
         dataFormat: 'application/json',
@@ -125,6 +128,7 @@ export class RegistriesComponent implements AfterViewInit {
         owner: this.identity.did,
       },
       message: {
+        published: true, // Admin account publish for everyone to see.
         protocol: registry.uri,
         protocolPath: 'profile',
         dataFormat: 'application/json',
