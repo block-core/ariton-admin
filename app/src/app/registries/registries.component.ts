@@ -62,58 +62,15 @@ export class RegistriesComponent implements AfterViewInit {
   async createData() {
     // During development, we will populate the registry protocol with local dummy data. In the future,
     // data will be retrieved from one or multiple official registries (DWNs).
-    const { status, record } = await this.identity.web5.dwn.records.create({
-      data: {
-        registry: 'bsn',
-        name: 'Blockchain Social Network (BSN)',
-        title: 'Stellar blockchain data registry',
-        description: 'Used by the Montelibero project to build a social network on the Stellar blockchain.',
-        url: 'https://ariton.app',
-        icon: 'https://ariton.app/assets/ariton-favicon.png',
-        owner: this.identity.did,
-      },
-      message: {
-        published: true, // Admin account publish for everyone to see.
-        protocol: registry.uri,
-        protocolPath: 'profile',
-        dataFormat: 'application/json',
-        tags: {
-          module: 'registries',
-        },
-      },
-    });
 
     await this.identity.web5.dwn.records.create({
       data: {
-        registry: 'liberstad-cc',
-        name: 'Liberstad CC',
-        title: 'Crypto Company Registry',
-        description:
-          'CC are companies that exists on the City Chain blockchain and operate independently outside of national and state borders and boundaries.',
-        url: 'https://www.liberstad.cc',
-        icon: 'https://www.liberstad.cc/liberstad-square-512x512.png',
-        owner: this.identity.did,
-      },
-      message: {
-        published: true, // Admin account publish for everyone to see.
-        protocol: registry.uri,
-        protocolPath: 'profile',
-        dataFormat: 'application/json',
-        tags: {
-          module: 'registries',
-        },
-      },
-    });
-
-    await this.identity.web5.dwn.records.create({
-      data: {
-        registry: 'freeid',
-        name: 'FreeID',
-        title: 'Unchain Your Identity in the New Free World',
-        description:
-          'FreeID is a revolutionary, decentralized identity system designed for individuals who value freedom and autonomy worldwide. Developed by the FreeID Foundation, established under the auspices of the World Voluntaryist Organization, FreeID offers a global solution for those seeking sovereignty over their personal identity. Serving as a parallel identity system within the New Free World, FreeID empowers individuals with a secure and cryptographically protected means of asserting their autonomy.',
-        url: 'https://www.freeid.me/',
-        icon: 'data:image/png;base64,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dTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAC4jAAAuIwF4pT92AAAFvmlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgOS4xLWMwMDIgNzkuYTZhNjM5NiwgMjAyNC8wMy8xMi0wNzo0ODoyMyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdEV2dD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlRXZlbnQjIiB4bWxuczpwaG90b3Nob3A9Imh0dHA6Ly9ucy5hZG9iZS5jb20vcGhvdG9zaG9wLzEuMC8iIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDI1LjExIChXaW5kb3dzKSIgeG1wOkNyZWF0ZURhdGU9IjIwMjQtMDgtMjVUMDM6MDM6MTMrMDI6MDAiIHhtcDpNZXRhZGF0YURhdGU9IjIwMjQtMDgtMjVUMDM6MTA6MjMrMDI6MDAiIHhtcDpNb2RpZnlEYXRlPSIyMDI0LTA4LTI1VDAzOjEwOjIzKzAyOjAwIiBkYzpmb3JtYXQ9ImltYWdlL3BuZyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDphNDA5NzVhNy1hZDU2LTEzNGItOTM5MC1iMTAwODY4ZjdmYzAiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NTE4YWFmMTAtY2FmZi1kNjRkLWJiZjEtMTQ1NDFi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',
+        registry: 'free-citadels',
+        name: 'Free Citadels',
+        title: 'Database of freedom communities',
+        description: 'Explore the organisations that plan and build freedom communities.',
+        url: 'https://freecitadels.com/',
+        icon: 'https://unicorn-cdn.b-cdn.net/7a9da0d8-981c-484c-9640-1c65fbd0616b/free-citadels-logo.png?width=70&height=70',
         owner: this.identity.did,
       },
       message: {
@@ -151,12 +108,99 @@ export class RegistriesComponent implements AfterViewInit {
 
     await this.identity.web5.dwn.records.create({
       data: {
-        registry: 'free-citadels',
-        name: 'Free Citadels',
-        title: 'Database of freedom communities',
-        description: 'Explore the organisations that plan and build freedom communities.',
-        url: 'https://freecitadels.com/',
-        icon: 'https://unicorn-cdn.b-cdn.net/7a9da0d8-981c-484c-9640-1c65fbd0616b/free-citadels-logo.png?width=70&height=70',
+        registry: 'liberstad-cc',
+        name: 'Liberstad CC',
+        title: 'Crypto Company Registry',
+        description:
+          'CC are companies that exists on the City Chain blockchain and operate independently outside of national and state borders and boundaries.',
+        url: 'https://www.liberstad.cc',
+        icon: 'https://www.liberstad.cc/liberstad-square-512x512.png',
+        owner: this.identity.did,
+      },
+      message: {
+        published: true, // Admin account publish for everyone to see.
+        protocol: registry.uri,
+        protocolPath: 'profile',
+        dataFormat: 'application/json',
+        tags: {
+          module: 'registries',
+        },
+      },
+    });
+
+    await this.identity.web5.dwn.records.create({
+      data: {
+        registry: 'local-company-registry',
+        name: 'Local Company Registry',
+        title: 'Registry of companies in your local area.',
+        description: 'Helps local businesses to be found and to find other local businesses to work with.',
+        url: '',
+        icon: '/icons/apps/local-company-registry.jpg',
+        owner: this.identity.did,
+      },
+      message: {
+        published: true, // Admin account publish for everyone to see.
+        protocol: registry.uri,
+        protocolPath: 'profile',
+        dataFormat: 'application/json',
+        tags: {
+          module: 'registries',
+        },
+      },
+    });
+
+    await this.identity.web5.dwn.records.create({
+      data: {
+        registry: 'freeid',
+        name: 'FreeID',
+        title: 'Unchain Your Identity in the New Free World',
+        description:
+          'FreeID is a revolutionary, decentralized identity system designed for individuals who value freedom and autonomy worldwide. Developed by the FreeID Foundation, established under the auspices of the World Voluntaryist Organization, FreeID offers a global solution for those seeking sovereignty over their personal identity. Serving as a parallel identity system within the New Free World, FreeID empowers individuals with a secure and cryptographically protected means of asserting their autonomy.',
+        url: 'https://www.freeid.me/',
+        icon: 'data:image/png;base64,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dTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAC4jAAAuIwF4pT92AAAFvmlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgOS4xLWMwMDIgNzkuYTZhNjM5NiwgMjAyNC8wMy8xMi0wNzo0ODoyMyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdEV2dD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlRXZlbnQjIiB4bWxuczpwaG90b3Nob3A9Imh0dHA6Ly9ucy5hZG9iZS5jb20vcGhvdG9zaG9wLzEuMC8iIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDI1LjExIChXaW5kb3dzKSIgeG1wOkNyZWF0ZURhdGU9IjIwMjQtMDgtMjVUMDM6MDM6MTMrMDI6MDAiIHhtcDpNZXRhZGF0YURhdGU9IjIwMjQtMDgtMjVUMDM6MTA6MjMrMDI6MDAiIHhtcDpNb2RpZnlEYXRlPSIyMDI0LTA4LTI1VDAzOjEwOjIzKzAyOjAwIiBkYzpmb3JtYXQ9ImltYWdlL3BuZyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDphNDA5NzVhNy1hZDU2LTEzNGItOTM5MC1iMTAwODY4ZjdmYzAiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NTE4YWFmMTAtY2FmZi1kNjRkLWJiZjEtMTQ1NDFi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',
+        owner: this.identity.did,
+      },
+      message: {
+        published: true, // Admin account publish for everyone to see.
+        protocol: registry.uri,
+        protocolPath: 'profile',
+        dataFormat: 'application/json',
+        tags: {
+          module: 'registries',
+        },
+      },
+    });
+
+    await this.identity.web5.dwn.records.create({
+      data: {
+        registry: 'liberstad-land-registry',
+        name: 'Liberstad Land Registry (LLR)',
+        title: 'Registry of land in Liberstad',
+        description:
+          'For property ownership to be formally recognized, it must be voluntarily registered with the Liberstad Land Registry (LLR). The LLR facilitates transparency and documentation, ensuring that property rights are clearly defined and respected within the community.',
+        url: '',
+        icon: 'https://www.liberstad.cc/liberstad-square-512x512.png',
+        owner: this.identity.did,
+      },
+      message: {
+        published: true, // Admin account publish for everyone to see.
+        protocol: registry.uri,
+        protocolPath: 'profile',
+        dataFormat: 'application/json',
+        tags: {
+          module: 'registries',
+        },
+      },
+    });
+
+    const { status, record } = await this.identity.web5.dwn.records.create({
+      data: {
+        registry: 'bsn',
+        name: 'Blockchain Social Network (BSN)',
+        title: 'Stellar blockchain data registry',
+        description: 'Used by the Montelibero project to build a social network on the Stellar blockchain.',
+        url: 'https://ariton.app',
+        icon: 'https://ariton.app/assets/ariton-favicon.png',
         owner: this.identity.did,
       },
       message: {
