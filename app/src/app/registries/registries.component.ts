@@ -86,6 +86,27 @@ export class RegistriesComponent implements AfterViewInit {
 
     await this.identity.web5.dwn.records.create({
       data: {
+        registry: 'gaianet',
+        name: 'Gaianet Ecosystem',
+        title: 'Project galary from Gaianet Ecosystem',
+        description: 'Use Gaianet to find the regenerative projects, places, products, knowledge and tools you need.',
+        url: 'https://www.gaianet.earth/',
+        icon: 'https://images.squarespace-cdn.com/content/v1/5f19985874011d5032b0bf8e/1615319719509-BJHSX0FA2FRN837UG9I6/gaianet-logo.png?format=500w',
+        owner: this.identity.did,
+      },
+      message: {
+        published: true, // Admin account publish for everyone to see.
+        protocol: registry.uri,
+        protocolPath: 'profile',
+        dataFormat: 'application/json',
+        tags: {
+          module: 'registries',
+        },
+      },
+    });
+
+    await this.identity.web5.dwn.records.create({
+      data: {
         registry: 'terra-registry',
         name: 'Terra Registry',
         title: 'Registry of free territories',
