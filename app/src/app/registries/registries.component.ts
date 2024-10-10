@@ -65,12 +65,33 @@ export class RegistriesComponent implements AfterViewInit {
 
     await this.identity.web5.dwn.records.create({
       data: {
-        registry: 'free-citadels',
-        name: 'Free Citadels',
-        title: 'Database of freedom communities',
-        description: 'Explore the organisations that plan and build freedom communities.',
-        url: 'https://freecitadels.com/',
-        icon: 'https://unicorn-cdn.b-cdn.net/7a9da0d8-981c-484c-9640-1c65fbd0616b/free-citadels-logo.png?width=70&height=70',
+        registry: 'gaianet',
+        name: 'Gaianet Ecosystem',
+        title: 'Project galary from Gaianet Ecosystem',
+        description: 'Use Gaianet to find the regenerative projects, places, products, knowledge and tools you need.',
+        url: 'https://www.gaianet.earth/',
+        icon: 'https://images.squarespace-cdn.com/content/v1/5f19985874011d5032b0bf8e/1615319719509-BJHSX0FA2FRN837UG9I6/gaianet-logo.png?format=500w',
+        owner: this.identity.did,
+      },
+      message: {
+        published: true, // Admin account publish for everyone to see.
+        protocol: registry.uri,
+        protocolPath: 'profile',
+        dataFormat: 'application/json',
+        tags: {
+          module: 'registries',
+        },
+      },
+    });
+
+    const { status, record } = await this.identity.web5.dwn.records.create({
+      data: {
+        registry: 'bsn',
+        name: 'Blockchain Social Network (BSN)',
+        title: 'Stellar blockchain data registry',
+        description: 'Used by the Montelibero project to build a social network on the Stellar blockchain.',
+        url: 'https://ariton.app',
+        icon: 'https://ariton.app/assets/ariton-favicon.png',
         owner: this.identity.did,
       },
       message: {
@@ -86,12 +107,33 @@ export class RegistriesComponent implements AfterViewInit {
 
     await this.identity.web5.dwn.records.create({
       data: {
-        registry: 'gaianet',
-        name: 'Gaianet Ecosystem',
-        title: 'Project galary from Gaianet Ecosystem',
-        description: 'Use Gaianet to find the regenerative projects, places, products, knowledge and tools you need.',
-        url: 'https://www.gaianet.earth/',
-        icon: 'https://images.squarespace-cdn.com/content/v1/5f19985874011d5032b0bf8e/1615319719509-BJHSX0FA2FRN837UG9I6/gaianet-logo.png?format=500w',
+        registry: 'podcast',
+        name: 'Podcasts',
+        title: 'Curated list of podcasts',
+        description: 'Podcasts related to Ariton.',
+        url: 'https://ariton.app',
+        icon: 'https://ariton.app/assets/ariton-favicon.png',
+        owner: this.identity.did,
+      },
+      message: {
+        published: true, // Admin account publish for everyone to see.
+        protocol: registry.uri,
+        protocolPath: 'profile',
+        dataFormat: 'application/json',
+        tags: {
+          module: 'registries',
+        },
+      },
+    });
+
+    await this.identity.web5.dwn.records.create({
+      data: {
+        registry: 'free-citadels',
+        name: 'Free Citadels',
+        title: 'Database of freedom communities',
+        description: 'Explore the organisations that plan and build freedom communities.',
+        url: 'https://freecitadels.com/',
+        icon: 'https://unicorn-cdn.b-cdn.net/7a9da0d8-981c-484c-9640-1c65fbd0616b/free-citadels-logo.png?width=70&height=70',
         owner: this.identity.did,
       },
       message: {
@@ -201,27 +243,6 @@ export class RegistriesComponent implements AfterViewInit {
           'For property ownership to be formally recognized, it must be voluntarily registered with the Liberstad Land Registry (LLR). The LLR facilitates transparency and documentation, ensuring that property rights are clearly defined and respected within the community.',
         url: '',
         icon: 'https://www.liberstad.cc/liberstad-square-512x512.png',
-        owner: this.identity.did,
-      },
-      message: {
-        published: true, // Admin account publish for everyone to see.
-        protocol: registry.uri,
-        protocolPath: 'profile',
-        dataFormat: 'application/json',
-        tags: {
-          module: 'registries',
-        },
-      },
-    });
-
-    const { status, record } = await this.identity.web5.dwn.records.create({
-      data: {
-        registry: 'bsn',
-        name: 'Blockchain Social Network (BSN)',
-        title: 'Stellar blockchain data registry',
-        description: 'Used by the Montelibero project to build a social network on the Stellar blockchain.',
-        url: 'https://ariton.app',
-        icon: 'https://ariton.app/assets/ariton-favicon.png',
         owner: this.identity.did,
       },
       message: {
